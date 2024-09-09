@@ -1,0 +1,998 @@
+/*Обнуление*/
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+body {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: WhiteSmoke;
+}
+.content {
+    flex-shrink: 0;
+}
+footer {
+    margin-top: auto;
+    background-color: #4C587D;
+    color: #fff;
+    text-align: center;
+}
+select:focus, textarea:focus {
+    outline: none;
+}
+textarea {
+    font-family: 'Lato', sans-serif;
+    padding: 4px 6px;
+    text-decoration: none;
+    padding-bottom: 25px;
+}
+/* Стилизация каталога */
+.catalog, .catalog-myAdverts {
+    font-family: Tahoma;
+    display: flex;
+    justify-content: start; /* Равное расстояние между записями */
+    flex-flow: row wrap;
+    margin-top: 0px;
+    padding-left: 5px;
+    width: 65%;
+    align-content: flex-start;
+}
+/* Стилизация каждой записи */
+.catalog-item, .catalog-item-myAdverts {
+    box-sizing: border-box;
+    width: 235px;
+    height: 255px;
+    margin-bottom: 10px; /* Расстояние между записями */
+    margin-left: 5px;
+    padding: 0px;
+    border: 0px solid #4C587D;
+    display: flex; /* Сделаем элемент контейнером для изображения и информации */
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    max-width: 12.5vw;
+    max-height: 33vh;
+    border-radius: 5px;
+}
+.catalog-item:hover, .catalog-item-myAdverts:hover {
+    cursor: pointer;
+    background-color: #D8E4F1;
+}
+.catalog-item img, .catalog-item-myAdverts .advertData img {
+    width: 215px; /* Максимальная ширина изображения (рекомендуемая ширина для 250x250px) */
+    height: 220px; /* Автоматическая высота для сохранения пропорций */
+    margin-right: 0px; /* Отступ справа от изображения */
+    max-width: 12.5vw;
+    max-height: 33vh;
+    object-fit: cover;
+    margin-top: 2.5px;
+    align-self: center;
+}
+.catalog-item .catNameInCatalog, .catalog-item-myAdverts .advertData .catNameInCatalog {
+    font-family: Segoe UI;
+    color: #4C587D;
+    font-size: 22px;
+    align-self: center;
+    margin: 0;
+}
+.catalog-myAdverts {
+    width: 75%;
+}
+.catalog-item-myAdverts {
+    flex-direction: row;
+    width: 265px;
+    max-width: 16vw;
+}
+.advertData {
+    display: flex;
+    flex-direction: column;
+}
+.advertButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Стилизация меню */
+.menu {
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #4C587D;
+    /*background-color: #28355F;*/ /* Цвет фона меню */
+    display: flex;
+    justify-content: space-between;
+    position: sticky; /* Используем sticky позиционирование */
+    top: 0; /* Располагаем меню вверху страницы */
+    z-index: 1;
+}
+.menu li {
+    display: inline-block;
+    /* Расстояние между пунктами меню */
+    flex: 1;
+    border-radius: 0px;
+    margin-right: 0px;
+    padding: 0px 0px;
+}
+.leftPart {
+    display: flex;
+    justify-self: left;
+    justify-content: space-between;
+    width: 55%;
+}
+.rightPart {
+    display: flex;
+    justify-content: space-between;
+    justify-self: right;
+    width: 30%;
+}
+.menu li a {
+    width: 100%;
+    color: white; /* Цвет текста ссылок */
+    text-decoration: none;
+    font-family: Tahoma;
+    padding: 10px 0px; /* Отступы вокруг текста ссылок */
+    font-size: 20px;
+    display: inline-block;
+    flex: 1;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.menu li a:hover {
+    background-color: #788AB2 /*#B3C1DC*/;
+    width: 100%;
+}
+
+#createAdd, #findPet {
+    background-color: white;
+    display: inline-block;
+    /* Расстояние между пунктами меню */
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 0px 2px;
+}
+#createAdd {
+    margin-left: 20px;
+}
+#findPet {
+    flex: 1;
+    margin-right: 15px;
+}
+#findPet a {
+    color: #4C587D;
+    font-size: 20px;
+    margin: 0px;
+}
+#createAdd a {
+    color: #4C587D;
+    font-size: 18px;
+    margin: 1px 0px;
+}
+#createAdd a:hover, #findPet a:hover {
+    background-color: #D8E4F1;
+    color: #414A86;
+}
+#login a:hover {
+    color: #D8E4F1;
+    background-color: #4C587D;
+}
+.main-content {
+    display: flex;
+    width: 100%;
+    margin-top: 0px;
+}
+.filters {
+    background-color: #788AB2;
+    padding: 10px 20px;
+    width: 590px;
+    min-width: 561px;
+    height: 10%;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-family: Tahoma;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+.filters label, .filters select, .filters option {
+    flex: 1;
+    display: inline-block;
+    margin-bottom: 12px;
+    line-height: 26px;
+}
+.filters label {
+    margin-top: 12px
+}
+.filters p{
+    align-self: center;
+    justify-self: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.cont {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.filters select {
+    position: relative;
+    display: block;
+    flex: 3.1;
+    margin: 5px 0;
+    font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+    font-size: 18px;
+    color: #60666d;
+    flex-basis: 50px;
+}
+
+.radioLabelCF, .radioLabelVaccinated, .radioLabelSterilized,
+.radioLabelActivity, .radioLabelWeight, .radioLabelGender,
+.radioLabelAge, .radioLabelCharacter {
+    font-size: 18px;
+    flex-grow: 1;
+    margin-left: 40px;
+}
+.radioLabelSterilized, .radioLabelVaccinated {
+    margin-left: 45px;
+}
+.radioContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+.radioLabelWeight { margin-left: 36px; }
+.radioLabelGender { margin-left: 33px; }
+.radioLabelActivity { margin-left: 23.5px; }
+.radioLabelAge { margin-left: 36px; }
+.radioLabelCharacter { margin-left: 15px; }
+#vaccinatedDefault {
+    flex-grow: 1.4;
+}
+.option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    top: 2.5px;
+    right: 0px;
+    bottom: 0;
+    left: 2.5px;
+    height: 20px;
+    width: 20px;
+    transition: all 0.15s ease-out 0s;
+    background: #fff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.5rem;
+    outline: none;
+    position: relative;
+    z-index: 1000;
+}
+.option-input:hover {
+    background: #D8E4F1;
+}
+.option-input:checked {
+    background: #B3C1DC;
+}
+.option-input:checked::before {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    font-size: 16px;
+    content: '\2713';
+    font-weight:bold;
+    position: absolute;
+    align-items:center;
+    justify-content:center;
+    font-family:'Font Awesome 5 Free';
+}
+.option-input:checked::after {
+    -webkit-animation: click-wave 0.75s;
+    -moz-animation: click-wave 0.75s;
+    animation: click-wave 0.75s;
+    background: #B3C1DC;
+    content: '';
+    display: block;
+    position: relative;
+    z-index: 100;
+}
+.option-input.radio {
+    border-radius: 50%;
+}
+.option-input.radio::after {
+    border-radius: 50%;
+}
+
+@keyframes click-wave {
+    0% {
+        height: 30px;
+        width: 30px;
+        opacity: 0.35;
+        position: relative;
+    }
+    100% {
+        height: 100px;
+        width: 100px;
+        margin-left: -40px;
+        margin-top: -40px;
+        opacity: 0;
+    }
+}
+
+.button-list, .form-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.button-list li a, .button-list button, .form-list form button, .submit-form, #complaintButton {
+    background-color: #4C587D;
+    border-radius: 8px;
+    color: white;
+    margin: 0px 0px 15px 0px;
+    padding: 12px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: Tahoma;
+}
+#flexBoxForSubmits {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.submit-form {
+    background-color: #fff;
+    color: #4C587D;
+    font-size: 18px;
+    margin: -10px 0 5px 0;
+    min-width: 35%;
+}
+.form-list form button, .submit-form {
+    padding: 10px 28px;
+    margin-top: 0px;
+}
+.button-list li a:hover, .button-list button:hover, .form-list form button:hover {
+    background-color: #788AB2;
+    cursor: pointer;
+}
+.submit-form:hover {
+    background-color: #D8E4F1;
+    cursor: pointer;
+}
+.findByParam, .deleteById {
+    display: flex;
+    align-items: center;
+}
+.findByParam label, .deleteById label {
+    flex-wrap: wrap;
+    width: 74px;
+    margin-right: 2px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+.findByParam input, .deleteById input, .findByParam .long-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60px;
+    font-size: 14.5px;
+    text-align: center;
+    margin-right: 50px;
+    margin-bottom: 10px;
+}
+.findByParam .long-input { width:300px; }
+.table {
+    box-sizing: border-box;
+    width: 99%;
+    margin: 0px 5px 20px 5px;
+    border: 1px solid DarkGray;
+    font-size: 18px;
+}
+.table th {
+    font-weight: bold;
+    padding: 10px;
+    background: Gainsboro;
+    border: 1px solid DarkGray;
+}
+.table td{
+    padding: 10px 15px;
+    border: 1px solid DarkGray;
+    text-align: center;
+}
+.table tbody tr:nth-child(odd){
+    background: #fff;
+}
+.table tbody tr:nth-child(even){
+    background: #fff;
+}
+.table input{
+    height: 100%;
+    width: 100%;
+    font-family: inherit;
+    box-sizing: border-box;
+    font-size: 1.25rem;
+    text-align: center;
+}
+#scheduleTable{
+    margin: 0 0 0.375rem 0;
+    padding: 0;
+    width: 100%;
+}
+#scheduleTable td {
+    padding: 0.375rem 0.75rem;
+}
+#scheduleTable input::placeholder {
+    color: #B7B7B7;
+}
+.table__label{
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 1.25rem;
+}
+
+.text-field {
+    display: flex;
+    margin-bottom: 0.20rem;
+    font-size: 20px;
+}
+.text-field__label {
+    display: block;
+    margin-bottom: 0.10rem;
+}
+.text-field__input {
+    display: block;
+    margin-top: 10px;
+    width: 75%;
+    height: calc(1.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #4C587D;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.text-field__input:focus {  outline: none; }
+.text-field__input::placeholder{
+    color: #B7B7B7;
+}
+.text-field__input:hover{ border-color: #888; }
+.text-field__select {
+    display: block;
+    min-width: 8%;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    padding: 0.4rem 0.4rem;
+    margin: 0;
+    border: 1px solid #bdbdbd;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: 0.25rem;
+    font-family: inherit;
+}
+.text-field__select:hover{ border-color: #888; }
+.text-field__select:focus{
+    border:1px black solid;
+}
+
+.center-global-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.addForm-container {
+    width: 32.5%;
+    min-width: 325px;
+    display: flex;
+    flex-direction: column;
+}
+.addForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.errorMessage{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    color: red;
+    display: none;
+}
+.updateInstruction {
+    margin: .55rem 0 .55rem 0;
+    font-size: 1.15rem;
+    color: DarkGrey;
+}
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+}
+.custom-select::after {
+    content: '\25BE'; /* стрелочка вниз */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    color: #4C587D;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+.custom-select select {
+    padding: 2px;
+    padding-left: 10px;
+    appearance: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 17px;
+    color: #4C587D;
+    width: 300px;
+}
+.custom-select select option {
+    padding: 10px;
+}
+.sortingBlock {
+    margin-top: 15px;
+}
+.sortingBlock label {
+    font-size: 24px;
+}
+.image-preview {
+    display: flex;
+    margin-top: -5px;
+    margin-bottom: 0px;
+}
+.image-preview img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* чтобы изображение не растягивалось и не сжималось, сохраняя соотношение сторон */
+    margin: 5px 7.5px;
+}
+
+.remove-button {
+    margin-left: -25px;
+    height: 15px;
+    width: 15px;
+    margin-top: 5px;
+    display: block;
+    color: red;
+}
+.remove-button:hover {
+    cursor: pointer;
+    background-color: pink;
+}
+.product-image {height: 490px;}
+.product-image img {
+    width: 400px;
+    min-height: 465px;
+    max-height: 485px;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Стилизация анкеты кота */
+.addContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.cat-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /*align-items: center;*/
+    flex-grow: 1;
+    margin-top: 10px;
+    padding-left: 20px;
+    color: #4C587D;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+}
+.cat-details p {
+    margin-bottom: 20px;
+}
+
+#giveHomeButton{
+    margin-top: 25px;
+    width: 100%;
+    background-color: #4C587D;
+    color: #fff;
+    font-size: 20px;
+}
+#giveHomeButton:hover {
+    background-color: #788AB2;
+}
+#adoptionRulesButton {
+    display: none;
+}
+#contactInfo {
+    display: none;
+    flex-direction: column;
+}
+#contactInfo p {
+    margin-bottom: 5px;
+}
+.describe {
+    font-family: 'Lato', sans-serif;
+    color: #4C587D;
+    width: 1200px;
+    max-width: 90vw;
+    margin-bottom: 10px;
+    position: relative;
+}
+.describe p {
+    font-size: 18px;
+}
+#headline {
+    font-size: 28px;
+    margin: 5px 0px;
+}
+.contForDescribe {
+    display: flex;
+    flex-direction: column;
+}
+#addDescription {
+    margin-bottom: -5px;
+}
+/*стилизация счетчка символов*/
+.counter-box{
+    position: relative;
+    display: inline-block;
+}
+
+.counter-text{
+    position: relative;
+    left: 470px;
+    bottom: 20px;
+    color: #4C587D;
+    font-size: 14px;
+    width: 60px; /* Фиксированная ширина */
+    text-align: right; /* Выравнивание текста по правому краю */
+
+}
+.complaintButton {
+    position: absolute; /* Измените на это */
+    top: 5px; /* Добавьте это */
+    right: 0; /* Измените на это */
+    color: white;
+    background-color: #F695AF;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+.complaintButton:hover {
+    cursor: pointer;
+    background-color: #F6648C;
+}
+#creationDate {
+    position: absolute;
+    right: -10px;
+    top: -520px;
+    color: #4C587D;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+.footer-content {
+    margin: 0 auto;
+    padding: 10px 5px 7.5px 5px;
+}
+.adoptRulesFlexbox {
+    display: flex;
+    flex-direction: column;
+}
+.adoptRulesPartsFlexbox, .partsFlexbox {
+    display: flex;
+    flex-direction: row;
+}
+.partsFlexbox {
+    width: 80%;
+    margin-top: 10px;
+}
+.partsFlexbox p {
+    margin-bottom: 12px;
+    margin-top: 10px;
+}
+.leftRulesPart {
+    display: flex;
+    flex-direction: column;
+    width: 43%;
+}
+.rightRulesPart {
+    display: flex;
+    flex-direction: row;
+}
+.leftAboutPart {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: right;
+}
+.rightAboutPart {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: left;
+    margin-top: 15px;
+}
+.adoptRulesH1 {
+    color: #4C587D;
+    font-size: 50px;
+    margin-bottom: 10px;
+    font-family: 'Lato', sans-serif;
+    align-self: center;
+}
+.adoptRuleH3, .aboutProjectHeader {
+    color: #4C587D;
+    font-size: 40px;
+    margin-left: 22px;
+    margin-bottom: 8px;
+    font-family: 'Lato', sans-serif;
+    /*align-self: flex-start;*/
+}
+.aboutProjectHeader {
+    font-size: 50px;
+    margin-top: 10px;
+}
+.adoptRulesDescribe, .aboutDescribe {
+    color: #4C587D;
+    font-size: 21px;
+    margin-left: 26px;
+    margin-bottom: 16px;
+    font-family: 'Lato', sans-serif;
+    /*align-self: flex-start;*/
+}
+.adopt-image img {
+    margin-top: 20%;
+    margin-left: 20px;
+    margin-right: 12.5px;
+    width: 475px;
+    min-height: 475px;
+    max-height: 550px;
+    height: auto;
+    object-fit: cover;
+}
+.aboutProject-image img {
+    margin-top: 5%;
+    margin-left: 20px;
+    margin-right: 5px;
+    width: 475px;
+    min-width: 175px;
+    min-height: 475px;
+    max-height: 550px;
+    height: auto;
+    object-fit: cover;
+}
+.aboutContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 40%;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 40%;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 140px;
+    z-index: 1;
+}
+.dropdown-content li {width: 100%;}
+.dropdown-content li a {
+    background-color: white;
+    color: #4C587D;
+    width: 100%;
+    text-decoration: none;
+    font-family: Tahoma;
+    padding: 10px 0px; /* Отступы вокруг текста ссылок */
+    margin-top: 4px;
+    font-size: 18px;
+    display: inline-block;
+    flex: 1;
+    text-align: center;
+    border-radius: 5px;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content li a:hover {
+    background-color: #D8E4F1;
+    color: #414A86;
+}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #788AB2;}
+.dropbtn {
+    width: 100%;
+    background-color: #4C587D;
+    color: white; /* Цвет текста ссылок */
+    text-decoration: none;
+    font-family: Tahoma;
+    padding: 10px 10px; /* Отступы вокруг текста ссылок */
+    font-size: 20px;
+    display: inline-block;
+    flex: 1;
+    text-align: center;
+    border-radius: 5px;
+}
+.catalog-item:hover {
+    cursor: pointer;
+    background-color: #D8E4F1;
+}
+.catNameInAdvert {
+    color: #4C587D;
+    font-size: 32px;
+    margin-bottom: 12px;
+    font-family: 'Lato', sans-serif;
+}
+#sendSmsInAppButton a {
+    width: 100%;
+}
+.paginationFlexContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.pagination {
+    display: inline-block;
+    align-self: center;
+    align-content: center;
+}
+.pagination ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+.pagination ul li {
+    margin: 0 2px;
+}
+.pagination a {
+    color: #414A86;
+    float: left;
+    padding: 4px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    height: 26px;
+}
+.pagination a.active {
+    background-color: #788AB2;
+    border-radius: 5px;
+    color: white;
+}
+.pagination a.active:hover {
+    background-color: #4C587D;
+}
+.pagination a:hover:not(.active) {background-color: #B3C1DC;}
+.catalog {
+    height: 795px;
+}
+.pageNameCont {
+    padding: 10px 20px;
+    width: 400px;
+    height: 20%;
+    box-sizing: border-box;
+    font-size: 30px;
+    font-family: Tahoma;
+    color: #4C587D;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+.pageNameCont p {
+    align-self: center;
+    justify-self: center;
+}
+.infoInAddForm {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+.infoInAddForm a {
+    color: #f1f1f1;
+    font-size: 17px;
+    font-family: 'Calibri', 'Arial', sans-serif;
+    margin-bottom: 6px;
+}
+.infoInAddForm a:hover {
+    color: #D8E4F1;
+}
+.changeContacts {
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+.changeContactsInput {
+    display: block;
+    margin-top: 10px;
+    width: 65%;
+    height: calc(1.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #4C587D;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.delete-btn {
+    position: relative;
+    width: 40px;
+    height: 50px;
+    border-radius: 25px;
+    border: 2px solid rgb(231, 50, 50);
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px #333;
+    overflow: hidden;
+    transition: .3s;
+}
+.delete-btn:hover {
+    background-color: rgb(245, 207, 207);
+    transform: scale(1.1);
+    box-shadow: 0 0 4px #111;
+    transition: .3s;
+}
+svg {
+    color: rgb(231, 50, 50);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s;
+}
+.edit-btn {
+    position: relative;
+    width: 40px;
+    height: 50px;
+    border-radius: 25px;
+    border: 2px solid rgb(50, 231, 50); /* Измените цвет границы на свой вкус */
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px #333;
+    overflow: hidden;
+    transition: .3s;
+    margin-bottom: 20px;
+    margin-right: 3px;
+}
+.edit-btn:hover {
+    background-color: rgb(207, 245, 207); /* Измените цвет фона при наведении на свой вкус */
+    transform: scale(1.1);
+    box-shadow: 0 0 4px #111;
+    transition: .3s;
+}
+.edit-btn::before {
+    content: "✏️";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s;
+    color: rgb(50, 231, 50); /* Измените цвет значка на свой вкус */
+}
